@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 
 // Importamos la función que genera el diseño desde un archivo de servicios (probablemente usa una API como Replicate)
-import { generateDesign } from './services/designService';
+import { generateDesign } from './services/designService.js';
 
 // Importamos los componentes hijos
-import DesignForm from './components/DesignForm';
-import ResultDisplay from './components/ResultDisplay';
-import LoadingIndicator from './components/LoadingIndicator';
+import DesignForm from './components/DesignForm.jsx';
+import ResultDisplay from './components/ResultDisplay.jsx';
+import LoadingIndicator from './components/LoadingIndicator.jsx';
 
 // Importamos los estilos generales de la aplicación
 import './styles/App.css';

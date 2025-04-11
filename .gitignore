@@ -1,0 +1,14 @@
+# Python
+venvInterior/
+__pycache__/
+
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.DS_Store
+
+# Variables privadas
+.env
+frontend/.env
+backend/.env
