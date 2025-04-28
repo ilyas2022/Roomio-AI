@@ -12,18 +12,22 @@ if not api_token:
 replicate_client = replicate.Client(api_token=api_token)
 
 def generate_image(image_url: str, prompt: str):
-    output = replicate_client.run(
-        "adirik/interior-design:76604baddc85b1b4616e1c6475eca080da339c8875bd4996705440484a6eac38",
-        input={
-            "image": image_url,
-            "prompt": prompt,
-            "negative_prompt": "lowres, watermark, banner, logo, contactinfo, text, blurry, surreal, ugly, mirror",
-            "num_inference_steps": 50,
-            "guidance_scale": 15,
-            "prompt_strength": 0.8
-        }
-    )
-
-
-    return str(output)
+    try:
+        output = replicate_client.run(
+            "adirik/interior-design:76604baddc85b1b4616e1c6475eca080da339c8875bd4996705440484a6eac38",
+            input={
+                "image": image_url,
+                "prompt": prompt,
+                "negative_prompt": "lowres, watermark, banner, logo, contactinfo, text, blurry, surreal, ugly, mirror",
+                "num_inference_steps": 50,
+                "guidance_scale": 15,
+                "prompt_strength": 0.8
+            },
+            timeout=300  # Aumentar a 5 minutos
+        )
+        
+        return str(output)
+    except Exception as e:
+        print(f"Error in generate_image: {str(e)}")
+        raise e
 
