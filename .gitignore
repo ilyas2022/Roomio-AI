@@ -1,14 +1,19 @@
 # Python
-venvInterior/
 __pycache__/
+*.py[cod]
+*$py.class
+venvInterior/
+backend/uploads/*
+!backend/uploads/.gitkeep
 
-# Node / Frontend
-frontend/node_modules/
-frontend/dist/
+# Node.js
+node_modules/
+dist/
 frontend/.vite/
-frontend/.DS_Store
-
-# Variables privadas
 .env
 frontend/.env
 backend/.env
+
+# Sistema
+.DS_Store
+Thumbs.db
