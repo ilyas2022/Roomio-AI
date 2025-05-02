@@ -67,3 +67,5 @@ desktop.ini
 # Archivos de generación y salida específicos
 output.png
 backend/output.png
+
+.cursor

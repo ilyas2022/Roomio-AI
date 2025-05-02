@@ -1,10 +1,10 @@
 FROM node:18 AS build
 WORKDIR /app
-COPY frontend/package.json .
+COPY frontend/package.json ./
 RUN npm install
-COPY frontend/ .
-# Añadir estas líneas para definir ARGs para las variables de entorno
-ARG VITE_API_URL
+COPY frontend/ ./
+# Variables de entorno para la construcción
+ARG VITE_API_URL=/api
 ARG VITE_FIREBASE_API_KEY
 ARG VITE_FIREBASE_AUTH_DOMAIN
 ARG VITE_FIREBASE_PROJECT_ID
