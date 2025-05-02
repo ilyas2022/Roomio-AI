@@ -1,0 +1,21 @@
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "docker-compose up"
+healthcheckPath = "/health"
+healthcheckTimeout = 100
+restartPolicyType = "ON_FAILURE"
+
+[[services]]
+name = "frontend"
+dockerfile = "frontend/Dockerfile"
+healthcheckPath = "/health"
+envVarName = "RAILWAY_STATIC_URL"
+
+[[services]]
+name = "backend"
+dockerfile = "backend/Dockerfile"
+healthcheckPath = "/api/health"
+envVarName = "RAILWAY_BACKEND_URL" 
