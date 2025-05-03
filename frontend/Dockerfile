@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install
 COPY . ./
-# Construir con las variables de entorno
+# Build the application
 RUN npm run build
 
 FROM nginx:alpine
