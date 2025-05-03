@@ -17,4 +17,4 @@ RUN mkdir -p uploads && chmod 777 uploads
 EXPOSE 5000
 
 # Comando para producción usando Gunicorn
-CMD ["gunicorn", "--config", "gunicorn_config.py", "app:app"]
+CMD ["gunicorn", "--config", "gunicorn_config.py", "--bind", "0.0.0.0:5000", "app:app"]

@@ -1,20 +1,14 @@
-# fly.toml app configuration file generated for roomio-ai on 2025-05-03T05:59:17Z
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
-app = "roomio-ai"
+app = "roomio-ai-backend"
 primary_region = "mia"
 
 [build]
-  # Usaremos el Dockerfile en la carpeta raíz
   dockerfile = "Dockerfile"
 
 [env]
-  PORT = "8080"
-
+  PORT = "5000"
+  
 [http_service]
-  internal_port = 8080
+  internal_port = 5000
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
@@ -28,14 +22,14 @@ primary_region = "mia"
 
 [[services]]
   protocol = "tcp"
-  internal_port = 8080
+  internal_port = 5000
   processes = ["app"]
-
+  
   [[services.ports]]
     port = 80
     handlers = ["http"]
     force_https = true
-
+  
   [[services.ports]]
     port = 443
     handlers = ["tls", "http"]
@@ -45,12 +39,6 @@ primary_region = "mia"
     timeout = "2s"
     grace_period = "5s"
     method = "get"
-    path = "/"
+    path = "/health"
     protocol = "http"
-    tls_skip_verify = false
-
-[[vm]]
-  memory = '1gb'
-  cpu_kind = 'shared'
-  cpus = 1
-  memory_mb = 1024
+    tls_skip_verify = false 

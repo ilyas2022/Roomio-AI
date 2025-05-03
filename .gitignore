@@ -69,3 +69,27 @@ output.png
 backend/output.png
 
 .cursor
+
+# Fly.io
+.fly/
+
+# Virtual environments
+venv/
+venvInterior/
+
+# Cursor IDE
+.cursor/
+
+# Docker
+.dockerignore
+docker-compose.yaml.backup
+
+# Railway
+railway.json
+railway.toml
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

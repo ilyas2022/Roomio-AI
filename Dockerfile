@@ -40,3 +40,29 @@ COPY --from=build /app /app
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 CMD [ "npm", "run", "start" ]
+
+# Etapa de construcción del frontend
+FROM node:18 AS frontend-build
+WORKDIR /app/frontend
+COPY frontend/package*.json ./
+RUN npm install
+COPY frontend/ ./
+RUN npm run build
+
+# Etapa de la aplicación
+FROM node:18-slim AS app
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --production
+COPY server.js ./
+COPY --from=frontend-build /app/frontend/dist ./frontend/dist
+
+# Variables de entorno
+ENV PORT=8080
+ENV NODE_ENV=production
+
+# Exponer puerto
+EXPOSE 8080
+
+# Comando para iniciar
+CMD ["node", "server.js"]
